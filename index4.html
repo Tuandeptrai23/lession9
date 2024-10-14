@@ -2,77 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check form login</title>
-    <style>
-        .error{
-            display: none;
-            color: red;
-        }
-    </style>
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Render dữ liệu</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <form action="post" name="frm">
-        <div>
-            <label for="email">email</label>
-            <input type="text" name="email" id="email" onkeypress="checkemail()" onblur="checkBlankemail()">
-        </div>
-            <div id="error-email-1" class="error">
-                Vui long nhap lai
+    <section id="hot-product">
+        <div class="container d-flex flex-between">
+            <div class="w-20">
+                <img class="w-100" src="imgs/bn-kimtien.png" alt="bn-kimtien">
             </div>
-            <div id="error-email-2" class="error">
-                Email chua dung dinh dang
+            <div id="list-pro-hot" class="w-80 d-flex flex-between flex-wrap">
+               
             </div>
-        
-        <div>
-            <label for="password">password</label>
-            <input type="password" name="password" id="password" onblur="checkBlankPassword()">
-            <div id="error-password-1" class="error">
-                Vui long nhap lai
-            </div>
-        </div>
-        <div>
-            <input type="submit" name="submit" id="submit" onclick="check()">
-        </div>
-    </form>
-    <script>
-        function checkEmail(){
-            var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
-            var email = document.getElementById('email').value;
-            if(regexEmail.test(email_)){
-                console.log('none');
-                document.getElementById('error-email-2').style.display = 'none';
-            }else{
-            
-                document.getElementById('error-email-2').style.display = 'block';
+        </section>
+        <script>
+            var listPro = [
+
+                {
+                    id : 'SP01',
+                    name: "Cây kim tiền 1",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP02',
+                    name: "Cây kim tiền 2",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP03',
+                    name: "Cây kim tiền 3",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP04',
+                    name: "Cây kim tiền 4",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP05',
+                    name: "Cây kim tiền 5",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP06',
+                    name: "Cây kim tiền 6",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+                {
+                    id : 'SP07',
+                    name: "Cây kim tiền 7",
+                    img: "imgs/sp-kimtien-1.png",
+                    price: 18888000,
+                    hot : true,
+                    status : true,
+
+                },
+            ]
+            function renderProduct(product){
+                var Render = `<div class="w-25 box-product">
+                    <div>
+                        <div class="product-top">
+                            <img class="w-100" src="${product.img}" alt>
+                            <div class="mo-ta">
+                                <div>
+                                    <p>Lorem ipsum dolor, sit amet conse ctetur amet conse ctetur
+                                        adipi sicing elit. Amet harum repu dian.</p>
+                                    <div class="d-flex flex-between">
+                                        <button>Chi tiết</button>
+                                        <button>Mua ngay</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-bottom">
+                            <h3>${product.name}</h3>
+                            <p>${product.price}</p>
+                        </div>
+                    </div>
+                </div>`
+                return Render;
             }
-
-        }
-        function checkBlankemail(){
-            var email = document.getElementById('email').value;
-            if(email == "" || email==null){
-                document.getElementById('error-email-1').style.display = 'block';
-            }else{
-                document.getElementById('error-email-1').style.display = 'none';
+            function renderListProduct(listProduct){
+                var render = ``;
+                for(let i=0; i<listProduct.length;i++){
+                    render+=renderProduct(listProduct[i]);
+                }
+                document.getElementById("list-pro-hot").innerHTML = render;
             }
-        }
-
-        function checkBlankPassword(){
-            var password = document.getElementById('password').value;
-            if(password==""||password==null){
-                document.getElementById('error-password-1').style.display='block';
-            }else{
-                document.getElementById('error-password-1').style.display='none';
-            }
-        }
-
-        function check(){
-            event.preventDefault();
-            checkBlankemail();
-            checkBlankPassword();
-            checkEmail();
-
-        }
-    </script>
+            renderListProduct(listPro);
+         </script>
 </body>
 </html>
