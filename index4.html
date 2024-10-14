@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check form login</title>
+    <style>
+        .error{
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="post" name="frm">
+        <div>
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" onkeypress="checkemail()" onblur="checkBlankemail()">
+        </div>
+            <div id="error-email-1" class="error">
+                Vui long nhap lai
+            </div>
+            <div id="error-email-2" class="error">
+                Email chua dung dinh dang
+            </div>
+        
+        <div>
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" onblur="checkBlankPassword()">
+            <div id="error-password-1" class="error">
+                Vui long nhap lai
+            </div>
+        </div>
+        <div>
+            <input type="submit" name="submit" id="submit" onclick="check()">
+        </div>
+    </form>
+    <script>
+        function checkEmail(){
+            var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+            var email = document.getElementById('email').value;
+            if(regexEmail.test(email_)){
+                console.log('none');
+                document.getElementById('error-email-2').style.display = 'none';
+            }else{
+            
+                document.getElementById('error-email-2').style.display = 'block';
+            }
+
+        }
+        function checkBlankemail(){
+            var email = document.getElementById('email').value;
+            if(email == "" || email==null){
+                document.getElementById('error-email-1').style.display = 'block';
+            }else{
+                document.getElementById('error-email-1').style.display = 'none';
+            }
+        }
+
+        function checkBlankPassword(){
+            var password = document.getElementById('password').value;
+            if(password==""||password==null){
+                document.getElementById('error-password-1').style.display='block';
+            }else{
+                document.getElementById('error-password-1').style.display='none';
+            }
+        }
+
+        function check(){
+            event.preventDefault();
+            checkBlankemail();
+            checkBlankPassword();
+            checkEmail();
+
+        }
+    </script>
+</body>
+</html>

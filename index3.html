@@ -3,142 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký thông tin khách hàng</title>
-    <style>
-        .error{
-            color: red;
-            display: none;
-        }
-    </style>
+    <title>Ragular Exception</title>
 </head>
 <body>
-    <form action="post" name="frm">
+    <form action="post">
         <div>
-            <label for="hoVaTen">Họ và Tên</label>
-            <input type="text" name="hoVaTen" id="hoVaTen">
-            <p id="err-ho-va-ten" class="error">Vui lòng không để trống</p>
-        </div>
-        <div>
-            <label for="email">Email</label>
+            <label for="email">email</label>
             <input type="text" name="email" id="email">
-            <p id="err-email" class="error">Vui lòng không để trống</p>
-            <p id="err-email-fail" class="error">Email không hợp lệ! Vui lòng nhập lại</p>
         </div>
         <div>
-            <label for="password">Mật khẩu</label>
+            <label for="password">password</label>
             <input type="password" name="password" id="password">
-            <input type="checkbox" name="showPass" id="showPass">
-            <p id="err-pass" class="error">Vui lòng không để trống</p>
-        </div>
-        <div>
-            <label for="rePassword">Nhập lại mậu khẩu</label>
-            <input type="password" name="rePassword" id="rePassword">
-            <input type="checkbox" name="showRePass" id="showRePass">
-            <p id="err-re-pass" class="error">Vui lòng không để trống</p>
-            <p id="err-re-pass-fail" class="error">Mậu khẩu không khớp!Vui lòng nhập lại</p>
-        </div>
-        <div>
-            <label for="tuoi">Tuổi</label>
-            <input type="number" name="tuoi" id="tuoi">
-            <p id="err-tuoi" class="error">Vui lòng không để trống</p>
-            <p id="err-tuoi-fail" class="error">Vui lòng nhập tuổi trên 18</p>
-            <p id="err-tuoi-fail-1" class="error">Vui lòng nhập tuổi dưới 100</p>
-        </div>
-        <div><input type="submit" name="" id=""></div>
-    </form>
-    <script>
-         var hoVaTen = document.getElementById("hoVaTen");
-         var email = document.getElementById("email");
-         var password = document.getElementById("password");
-         var rePassword = document.getElementById("rePassword");
-         var tuoi = document.getElementById("tuoi");
-         var regexEmail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            // Check trống
-         hoVaTen.addEventListener('blur',()=>{
-            let err = document.getElementById("err-ho-va-ten");
-            if( hoVaTen.value =="" || hoVaTen.value == null){
-                err.style.display = 'block'
-            }else{
-                err.style.display = 'none'
-            }
-        })
-        email.addEventListener('blur',()=>{
-            let err = document.getElementById("err-email");
-            if( email.value =="" || email.value == null){
-                err.style.display = 'block'
-            }else{
-                err.style.display = 'none'
-                let err2 = document.getElementById("err-email-fail");
-                if(regexEmail.test(email.value)){
-                    err2.style.display = 'none'
-                }else{
-                    err2.style.display = 'block'
-                }
-            }
-        })
-        password.addEventListener('blur',()=>{
-            let err = document.getElementById("err-pass");
-            if( password.value =="" || password.value == null){
-                err.style.display = 'block'
-            }else{
-                err.style.display = 'none'
-                if(!regexEmail.test(email.value)){
-                   
-                }
-            }
-        })
-        rePassword.addEventListener('blur',()=>{
-            let err = document.getElementById("err-re-pass");
-            if( rePassword.value =="" || rePassword.value == null){
-                err.style.display = 'block'
-            }else{
-                err.style.display = 'none'
-                let err2 = document.getElementById("err-re-pass-fail"); 
-                if(rePassword.value != password.value){
-                    err2.style.display = 'block'
-                }else{
-                    err2.style.display = 'none'
-                }
-            }
-        })
-        tuoi.addEventListener('blur',()=>{
-            let err = document.getElementById("err-tuoi");
-            if( tuoi.value =="" || tuoi.value == null){
-                err.style.display = 'block'
-            }else{
-                err.style.display = 'none'
-                let err3 = document.getElementById("err-tuoi-fail-1")
-                let err2 = document.getElementById("err-tuoi-fail"); 
-                if(parseInt(tuoi.value) >=18 && parseInt(tuoi.value)<100){
-                    err2.style.display = 'none'
-                    err3.style.display = 'none'
-                }else{
-                    err2.style.display = 'block'
-                    err3.style.display = 'block'
-                }
-                }
-            }
-        )
-        
-        document.getElementById("showPass").addEventListener('click',()=>{
-            console.log(document.getElementById("showPass").checked);
-            if(document.getElementById("showPass").checked == true){
-                password.type = 'text'
-            }else{
-                password.type = 'password'
-            }
-        })
-        document.getElementById("showRePass").addEventListener('click',()=>{
-            console.log(document.getElementById("showRePass").checked);
-            if(document.getElementById("showRePass").checked == true){
-                rePassword.type = 'text'
-            }else{
-                rePassword.type = 'password'
-            }
-        })
 
-        // Check trống
-        
-    </script>
+        </div>
+        <div>
+            <input type="submit" name="submit" id="submit">
+        </div>
+        <script>
+            function checkemail()
+            {
+                var regx = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/'
+            }
+        </script>
+    </form>
 </body>
 </html>
